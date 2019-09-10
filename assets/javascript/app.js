@@ -117,3 +117,7 @@ var game = {
 
     },
 }
+
+$(document).on("click", restart ) //that calls to restart game function. needs to be built
+$(document).on("click")  //that calls the clicked function
+$(document).on("click")  //that calls the loadQuestion function
