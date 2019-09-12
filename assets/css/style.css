@@ -16,13 +16,30 @@ body {
 }
 
 #timeLeft{
-    border: 1px red dashed
+    border: 1px red dashed;
+    text-align: center;
+    font-weight: bold;
 };
 
 #questionsDisplay{
     border: 1px red solid;
+    text-align: center;
+    font-weight: bold;
 };
 
 #answersDisplay{
     border: 1px yellow solid;
 };
+
+#start {
+    position: relative;
+    bottom: -150px;
+}
+
+h1{
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+
+}

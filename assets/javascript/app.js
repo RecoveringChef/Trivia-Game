@@ -14,28 +14,28 @@ var questions = [
     {
         question: "Printed in large friendly letters on the front cover of the 'Hitchiker's Guide to the Galaxy' were the words _____",
         answers: [" No Worries " , " Don't Panic ", " You're Hosed ", " Enjoy the Journey "],
-        correcAnswer: " Don't Panic ",
+        correctAnswer: " Don't Panic ",
         image: "./assets/images/dontPanic.jpg"
     },
     
     {
         question: "Earth was destroyed to ____________.",
         answers: [" clean out the riff raff from the outer spiral arm ", " give the neighbors a better view ", " improve property values of surrounding systems ", " make way for a hyperspace bypass "],
-        correcAnswer: " make way for a hyperspace bypass ",
+        correctAnswer: " make way for a hyperspace bypass ",
         image: "./assets/images/explode.jpg"
     },
 
     {
         question: "Author Dent was the last human off of earth with only the  _________ he was wearing.",
         answers: ["suit", "bath towel", "swim trunks", "bath robe"],
-        correcAnswer: "bath robe",
+        correctAnswer: "bath robe",
         image: "./assets/images/arthur.jpg"
     },
 
     {
         question: "So long and thanks for all the _______",
         answers: ["Fish", "Memories", "Rubles", "Television Shows"],
-        correcAnswer: "Fish",
+        correctAnswer: "Fish",
         image: "./assets/images/soLong.jpg"
     },
 
@@ -43,70 +43,70 @@ var questions = [
     {
         question: "Deep Thought, the most powerful computer ever made, took seven and a half million years to ponder ___________",
         answers: ["The nature of the Creator", "An exact value of Pi", "The Meaning of Life, the Universe, and Everything", "How much wood a woodchuck could chuck"],
-        correcAnswer: "The Meaning of Life, the Universe, and Everything",
+        correctAnswer: "The Meaning of Life, the Universe, and Everything",
         image: "./assets/images/deepThought.jpg"
     },
 
     {
         question: "After the supercomputer Deep Thought spent 7.5 million years pondering what it was constructoed for it returned teh value of ______",
         answers: ["43", "42", "Pi", "Unspecified"],
-        correcAnswer: "42",
+        correctAnswer: "42",
         image: "./assets/images/42.jpg"
     },
 
     {
         question: "The latest edition of the entry for 'Earth' in the Hitchiker's Guide has doubled from previous versions. It is now ____ long",
         answers: ["1 FULL page", "2 words", "4 paragraphs", "8 sentences"],
-        correcAnswer: "2 words",
+        correctAnswer: "2 words",
         image: "./assets/images/mostlyHarmless.jpg"
     },
 
     {
         question: "The most  massively useful thing an interstellar hitch hiker can have is ______ ",
         answers: ["a broad spectrum antibiotic", "a good blaster", "your sense of humor", "a towel"],
-        correcAnswer: "a towel",
+        correctAnswer: "a towel",
         image: "./assets/images/towel.jpg"
     },
 
     {
         question: "Marvin the  _______ android accompanied Arthur on many of his travels",
         answers: ["paranoid", "unlucky", "chipper", "hyperactive"],
-        correcAnswer: "paranoid",
+        correctAnswer: "paranoid",
         image: "./assets/images/marvin.jpeg"
     },
 
     {
         question: "Authur was eventually picked up by the recently stolen starship '________'",
         answers: ["White Star", "Red Dwarf", "Heart of Gold", "Serenity"],
-        correcAnswer: "Heart of Gold",
+        correctAnswer: "Heart of Gold",
         image: "./assets/images/ship.jpg"
     },
 
     {
         question: "Slartibartfast, a designer working on the Earth Mk. II was very proud of his award winning _______ ",
         answers: ["mountains", "cyclone storms", "dessert biomes", "fjords"],
-        correcAnswer: "fjords",
+        correctAnswer: "fjords",
         image: "./assets/images/fjord.jpg"
     },
 
 //    {
  //       question: " plenty more to make",
  //       answers: ["1", "2", "3", "4y"],
- //       correcAnswer: "",
+ //       correctAnswer: "",
  //       image: "./assets/images/"
 //    },
 
 //    {
  //       question: " plenty more to make",
  //       answers: ["1", "2", "3", "4y"],
- //       correcAnswer: "",
+ //       correctAnswer: "",
  //       image: "./assets/images/"
 //    },
 
 //    {
  //       question: " plenty more to make",
  //       answers: ["1", "2", "3", "4y"],
- //       correcAnswer: "",
+ //       correctAnswer: "",
  //       image: "./assets/images/"
 //    },
 
@@ -140,14 +140,21 @@ var game = {
     
     decrement: function(){
         if (countStartNumber >0){
-            console.log(countStartNumber);            
+            console.log(countStartNumber);  
+            $("#timeLeft").html("Time remaining: " + countStartNumber);
             countStartNumber --
         }
          else if (countStartNumber === 0){
-             game.timeUp()
+            $("#timeLeft").html("Time's up. Better luck next time.");
+            console.log("never enough time");
+            game.answerInCorrectly();
+           //  game.timeUp()
+           game.countDown();
+           game.nextQuestion();
+
             }
 
-            $("#timeLeft").html("Time remaining: " + countStartNumber)
+            
         
        
 
@@ -162,17 +169,18 @@ var game = {
         console.log("loading...");
         $("#start").hide();
         $("#questionsDisplay").html(questions[qNumber].question);
-        $("#answersDisplay").html(questions[qNumber].answers);
-        
-      //  for (var i = 0; i < questions.answers.length; i++){
-    //        holder.push(answers[i]);
-     //   };
-      
+     //   $("#answersDisplay").html(questions[qNumber].answers);
+       
+       for (var i = 0; i < questions[qNumber].answers.length; i++){
+        $("#answersDisplay").append("<p class='answer'>" + questions[qNumber].answers[i] + "</p>")
+     
 
         // set timer variable
         // add question dynamically
         // for loop to go through questions
-    },
+    }
+       
+},
         
     // nextQuestion: function
     nextQuestion: function() {
@@ -184,20 +192,20 @@ var game = {
     },
         
     // timeUp: function
-    timeUp: function() {
-        console.log("never enough time");
-        $("#answerDisplay").html("<p>Too slow. So sorry. Maybe next time. The correct answer is: ");
-        incorrect ++;
+  //  timeUp: function() {
+      //  console.log("never enough time");
+     //   $("#answerDisplay").html("Too slow. So sorry. Maybe next time. The correct answer is: ");
+   //     incorrect ++;
       //  game.stop();
        
                
-        game.countDown;
-        game.nextQuestion;
+      //  game.countDown;
+      //  game.nextQuestion;
 
         // clearInterval
         // display on page
         // conditional - if your in current question or next question
-    },
+  //  },
     
  //   stop: function(){
  //       running = false;
@@ -211,6 +219,9 @@ var game = {
     },
     //clicked: function ()
     clicked: function () {
+        console.log("was" + ($(this)));
+
+
     },
 
     // answerInCorrectly: function
@@ -241,4 +252,5 @@ var game = {
 
 $("#start").on("click", game.restart)
 
+$(document).on("click", ".answer", game.clicked)
 //$("#restart").on("click", game.restart) //needs to be hdden until afer w or l  **Or do we really need, UI might be cleaner with one button
