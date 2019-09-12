@@ -1,32 +1,32 @@
-//test is hooked properly
+//test is hooked up properly
 console.log("is it 7 x 6?");
 
 var correct = 0;
 var incorrect = 0;
 
 
-var card = $("#quiz-area");
-var countStartNumber = 30
+        //var card = $("#quiz-area");    **starter text, but not used iwth way i went  
+var countStartNumber = 20
 var timer;
 var qNumber = 0;
 
 var questions = [
     {
         question: "Printed in large friendly letters on the front cover of the 'Hitchiker's Guide to the Galaxy' were the words _____",
-        answers: ["No Worries", "Don't Panic", "You're Hosed", "Enjoy the Journey"],
-        correcAnswer: "Don't Panic",
+        answers: [" No Worries " , " Don't Panic ", " You're Hosed ", " Enjoy the Journey "],
+        correcAnswer: " Don't Panic ",
         image: "./assets/images/dontPanic.jpg"
     },
     
     {
         question: "Earth was destroyed to ____________.",
-        answers: ["clean out the riff raff", "give the neighbors a better view", "improve propwery values of surrounding systems", "make way for a new space highway route"],
-        correcAnswer: "make way for a new space highway route",
+        answers: [" clean out the riff raff from the outer spiral arm ", " give the neighbors a better view ", " improve property values of surrounding systems ", " make way for a hyperspace bypass "],
+        correcAnswer: " make way for a hyperspace bypass ",
         image: "./assets/images/explode.jpg"
     },
 
     {
-        question: "Author Dent was the last human off of earth with only the  ____ he was wearing.",
+        question: "Author Dent was the last human off of earth with only the  _________ he was wearing.",
         answers: ["suit", "bath towel", "swim trunks", "bath robe"],
         correcAnswer: "bath robe",
         image: "./assets/images/arthur.jpg"
@@ -48,21 +48,21 @@ var questions = [
     },
 
     {
-        question: "After so long thinking deeply it returned a value of ____",
+        question: "After the supercomputer Deep Thought spent 7.5 million years pondering what it was constructoed for it returned teh value of ______",
         answers: ["43", "42", "Pi", "Unspecified"],
         correcAnswer: "42",
         image: "./assets/images/42.jpg"
     },
 
     {
-        question: "The latest edition of the entry for Earth in the Hitchiker's Guide has doubled from previous versions. It is now ____ long",
+        question: "The latest edition of the entry for 'Earth' in the Hitchiker's Guide has doubled from previous versions. It is now ____ long",
         answers: ["1 FULL page", "2 words", "4 paragraphs", "8 sentences"],
         correcAnswer: "2 words",
         image: "./assets/images/mostlyHarmless.jpg"
     },
 
     {
-        question: "THE most important thing to always bring with you when hitchiking the galaxy is ______ ",
+        question: "The most  massively useful thing an interstellar hitch hiker can have is ______ ",
         answers: ["a broad spectrum antibiotic", "a good blaster", "your sense of humor", "a towel"],
         correcAnswer: "a towel",
         image: "./assets/images/towel.jpg"
@@ -70,7 +70,7 @@ var questions = [
 
     {
         question: "Marvin the  _______ android accompanied Arthur on many of his travels",
-        answers: ["paranoid", "unlucky", "chipper", "spastic"],
+        answers: ["paranoid", "unlucky", "chipper", "hyperactive"],
         correcAnswer: "paranoid",
         image: "./assets/images/marvin.jpeg"
     },
@@ -83,11 +83,33 @@ var questions = [
     },
 
     {
-        question: "Slartibartfast, a designer working on the Earth Mk. II was best known for his award winning _______",
+        question: "Slartibartfast, a designer working on the Earth Mk. II was very proud of his award winning _______ ",
         answers: ["mountains", "cyclone storms", "dessert biomes", "fjords"],
         correcAnswer: "fjords",
         image: "./assets/images/fjord.jpg"
     },
+
+//    {
+ //       question: " plenty more to make",
+ //       answers: ["1", "2", "3", "4y"],
+ //       correcAnswer: "",
+ //       image: "./assets/images/"
+//    },
+
+//    {
+ //       question: " plenty more to make",
+ //       answers: ["1", "2", "3", "4y"],
+ //       correcAnswer: "",
+ //       image: "./assets/images/"
+//    },
+
+//    {
+ //       question: " plenty more to make",
+ //       answers: ["1", "2", "3", "4y"],
+ //       correcAnswer: "",
+ //       image: "./assets/images/"
+//    },
+
 
 ];
 
@@ -109,6 +131,7 @@ var game = {
         console.log("ready, set");
         clearInterval(timer);
         timer = setInterval(game.decrement, 1000);
+        
          // decrement counter
         // display counter in on page
         // run timer function
@@ -117,14 +140,14 @@ var game = {
     
     decrement: function(){
         if (countStartNumber >0){
-            console.log(countStartNumber);
+            console.log(countStartNumber);            
             countStartNumber --
         }
          else if (countStartNumber === 0){
-             game.answerInCorrectly()
+             game.timeUp()
             }
 
-        
+            $("#timeLeft").html("Time remaining: " + countStartNumber)
         
        
 
@@ -137,7 +160,14 @@ var game = {
     loadQuestion: function() {
 
         console.log("loading...");
-        $("#questions").html(questions[qNumber].question)
+        $("#start").hide();
+        $("#questionsDisplay").html(questions[qNumber].question);
+        $("#answersDisplay").html(questions[qNumber].answers);
+        
+      //  for (var i = 0; i < questions.answers.length; i++){
+    //        holder.push(answers[i]);
+     //   };
+      
 
         // set timer variable
         // add question dynamically
@@ -146,6 +176,7 @@ var game = {
         
     // nextQuestion: function
     nextQuestion: function() {
+        console.log("next up");
         // set countdown
         // display counter
         // increment currentQuestion
@@ -154,10 +185,24 @@ var game = {
         
     // timeUp: function
     timeUp: function() {
+        console.log("never enough time");
+        $("#answerDisplay").html("<p>Too slow. So sorry. Maybe next time. The correct answer is: ");
+        incorrect ++;
+      //  game.stop();
+       
+               
+        game.countDown;
+        game.nextQuestion;
+
         // clearInterval
         // display on page
         // conditional - if your in current question or next question
     },
+    
+ //   stop: function(){
+ //       running = false;
+ //       clearInterval(timer);
+ //   },
         
     // results: function
     results: function () {
@@ -186,14 +231,14 @@ var game = {
     // reset: function
     restart: function () {
         console.log("test 123");
-        let countStartNumber = 30;
+        game.countDown();
         game.loadQuestion();
        
-        game.countDown();
         
     }
    
 };
 
 $("#start").on("click", game.restart)
-$("#restart").on("click", game.restart) //needs to be hdden until afer w or l 
+
+//$("#restart").on("click", game.restart) //needs to be hdden until afer w or l  **Or do we really need, UI might be cleaner with one button

@@ -1,0 +1,28 @@
+body {
+    background-image:url('../images/smiley.jpg');
+    margin-top: 0;
+    margin-left: 0;
+    height: 100%;
+    background-size: cover;
+}
+
+.container{
+    margin-top: 8%;
+    border: rgb(45, 43, 54) 1px solid;
+    width: 70%;
+    height: 50%;
+    background-color: rgba(158, 208, 228, 0.521) ;
+    
+}
+
+#timeLeft{
+    border: 1px red dashed
+};
+
+#questionsDisplay{
+    border: 1px red solid;
+};
+
+#answersDisplay{
+    border: 1px yellow solid;
+};
